@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 // Сервис - подушка между репозиторием и контроллером
 
 @Service
@@ -38,5 +40,10 @@ public class UserService {
     @Transactional
     public User findUserByLogin(String login){
         return userRepo.findUserByLogin(login);
+    }
+
+    @Transactional(readOnly = true)
+    public List<User> getAllUsers(){
+        return userRepo.getAllUsers();
     }
 }
